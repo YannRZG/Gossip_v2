@@ -7,6 +7,9 @@ In the future, it's gonna be a cool and superDesigned Website wehre all students
 
 Like, comment and Login system in coming.
 
+## UPDATE
+
+09/02/2024 : Add polymorphic system for comment, comment_to_comment and gossip
 
 ## Usage/Examples
 
@@ -86,7 +89,10 @@ end
 end
 
 20.times do
-  all_comments << Comment.create(content: Faker::Lorem.sentence(word_count: 2), user: all_users.sample, gossip: all_gossips.sample)
+  # Choisissez aléatoirement un utilisateur et un gossip ou un commentaire existant comme parent
+  parent = [all_gossips.sample, all_comments.sample].sample
+  # Créez un commentaire en utilisant la relation polymorphique
+  all_comments << Comment.create(content: Faker::Lorem.sentence(word_count: 2), user: all_users.sample, commentable: parent)
 end
 
 20.times do
