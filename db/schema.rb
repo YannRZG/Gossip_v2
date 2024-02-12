@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_09_072846) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_12_202821) do
   create_table "cities", force: :cascade do |t|
     t.string "name"
     t.string "zip_code"
@@ -77,6 +77,13 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_09_072846) do
 
   create_table "tags", force: :cascade do |t|
     t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_tests", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

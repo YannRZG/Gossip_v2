@@ -1,0 +1,55 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="/welcome/index">TheGossipProject</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="/welcome/index">Home <span class="sr-only"></span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/team/index">Team</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/contact/index">Contact</a>
+      </li>
+      
+    </ul>
+  </div>
+</nav>
+<br/>
+
+
+    <form action="/" method="post">
+    <input type="hidden" name="authenticity_token"
+    value="<%= form_authenticity_token %>">
+    Entre ton prénom : 
+    <input type="text" name="first_name">
+    Entre ton nom de famille :
+    <input type="text" name="last_name">
+    <input type="submit" name="Envoyer">
+</form>
+
+<h1>Bienvenue <%= "#{@user.first_name} #{@user.last_name}" %>!</h1>
+
+
+
+<h1>Tu trouvera ici tout les derniers potins ! </h1><br/><br/>
+
+<div class="row">
+  <% @gossips.each do |gossip| %>
+    <div class="col-md-4">
+      <div class="card mb-3">
+        
+        <div class="card-body">
+          <h5 class="card-title"><%= gossip.title %></h5>
+          <p class="card-text">Par : <%= gossip.user.first_name %></p>
+          <p class="card-text"><%= gossip.content %></p>
+          <%= link_to "Voir plus", gossip_path(gossip), class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
