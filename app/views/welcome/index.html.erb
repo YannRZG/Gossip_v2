@@ -29,13 +29,22 @@
     Entre ton nom de famille :
     <input type="text" name="last_name">
     <input type="submit" name="Envoyer">
-</form>
+</form></br>
+<div class="jumbotron-hero">
+  
+            <div class="container d-grid gap-2 justify-content-md-center py-5 text-dark">
+                <h1>Bienvenue <%= "#{@user.first_name} #{@user.last_name}" %>!</h1></br>
+                <h1>Tu trouvera ici tout les derniers potins ! </h1><br/><br/>
+            </div>
 
-<h1>Bienvenue <%= "#{@user.first_name} #{@user.last_name}" %>!</h1>
+
+            <div class="d-grid gap-2 d-md-flex justify-content-md-center py-5">
+                <button class="btn btn-primary" type="button">Je créer un Gossip</button>
+                <button class="btn btn-secondary text-light" type="button">Je découvre le programme</button>
+            </div>
+        </div>
 
 
-
-<h1>Tu trouvera ici tout les derniers potins ! </h1><br/><br/>
 
 <div class="row">
   <% @gossips.each do |gossip| %>
