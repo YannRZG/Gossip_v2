@@ -1,13 +1,16 @@
 Rails.application.routes.draw do
+  get 'log_in/index'
+  get 'log_in/show'
+  post 'log_in/index', to: 'gossips#create'
   get 'users/index'
   root "welcome#index"
   get 'welcome/index', to: 'welcome#index'
   post '/', to: 'welcome#index_post'
   get 'contact/index'
   get 'team/index'
+  get '/log_in/new'
 
-  resources :gossips, only: [:index, :show] # Définition des routes pour gossips
-
+  resources :gossips, except: [:destroy] # Routes RESTful pour les gossips
   resources :users, only: [:show] # Routes RESTful pour les utilisateurs
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -15,6 +18,7 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   # Defines the root path route ("/")
-  # root "posts#index"
+  # root "welcome#index"
 end
+
 

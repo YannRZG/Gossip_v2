@@ -1,0 +1,48 @@
+
+</br>
+</br>
+<h1>Créer un nouveau gossip<h1>
+
+ 
+
+    <div class="contact-box p-4 bg-primary">
+
+      
+                
+                <form action="<%=gossips_path(@gossip)%>" method="post">
+                    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+                  <div class="row">
+                    
+                    <div class="col-lg-6">
+                      <div class="form-group mt-3">
+                        <input class="form-control" type="text" name="title" placeholder="Titre">
+                      </div>
+                    </div>
+                    <div class="col-lg-12">
+                      <div class="form-group mt-3">
+                        <input class="form-control" type="text" name="content" placeholder="Contenu">
+                      </div>
+                    </div>
+                    <div class="col-lg-12">
+                     <button type="submit" class="btn btn-danger mt-3 mb-3 text-white border-0 py-2 px-3" ><span> Balancer mon potin ! <i class="ti-arrow-right"></i></span></button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+
+               <% if @gossip && @gossip.errors.any? %>
+      <p>Nous n'avons pas réussi à créer le potin pour la (ou les) raison(s) suivante(s) :</p>
+        <% @gossip.errors.full_messages.each do |message| %>
+          <p class="alert alert-danger" role="alert"><%= message %></p>
+        <% end %>
+      <% end %>
+              
+    </div>
+
+    <%# Les changements principaux par rapport à votre code initial sont :
+
+Utilisation de form_with pour générer le formulaire Rails.
+Utilisation de hidden_field_tag pour générer le champ caché d'authenticité.
+Utilisation de text_field_tag pour générer les champs de texte.
+Utilisation de text_area_tag pour générer le champ de zone de texte.
+Utilisation de submit_tag pour générer le bouton de soumission du formulaire. %>

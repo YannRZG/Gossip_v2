@@ -1,11 +1,12 @@
 class WelcomeController < ApplicationController
   def index
-    @user = UserTest.last
+    @user = User.last
+    @gossip = Gossip.new
     @gossips = Gossip.all
   end
 
   def index_post
-    user = UserTest.new
+    user = User.new
     user.first_name = params["first_name"]
     user.last_name = params["last_name"]
     user.save

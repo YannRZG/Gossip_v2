@@ -6,4 +6,8 @@ class User < ApplicationRecord
   has_many :comments
   has_many :like_gossips
   has_many :like_comments
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :email, presence: true
+  validates :city, presence: true
 end
