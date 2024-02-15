@@ -7,6 +7,10 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+require 'faker'
+Faker::Config.locale='fr'
+Faker::UniqueGenerator.clear
+
 City.destroy_all
 Comment.destroy_all
 GossipTag.destroy_all

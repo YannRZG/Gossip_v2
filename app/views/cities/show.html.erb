@@ -1,0 +1,21 @@
+</br></br>
+<h1><%=@city.name%></h1></br></br>
+<h4>Voici tout les potins liés à la ville de <%=@city.name%></h4>
+
+<div class="row">
+
+  <% @gossips.each do |gossip| %>
+    <div class="col-md-4">
+      <div class="card mb-3">
+        
+        <div class="card-body">
+          <h5 class="card-title"><%= gossip.title %></h5>
+          <p class="card-text">Par : <%= gossip.user.first_name %></p>
+          <p class="card-text"><%= gossip.content %></p>
+          <%# <%= link_to "Voir plus", gossip_path(gossip), class: "btn btn-primary" %>
+          <%# <%= link_to "Modifier", edit_gossip_path(gossip), class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

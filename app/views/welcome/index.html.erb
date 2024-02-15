@@ -1,19 +1,23 @@
+<%= javascript_include_tag 'typewriter' %>
 
-
-<div class="jumbotron-hero">
-  
-           <div class="container d-flex flex-column justify-content-center align-items-center py-5 text-dark">
-    <h1>Bienvenue <%=  "#{@user.first_name} #{@user.last_name}"%>!</h1>
-    <h1>Tu trouveras ici tout les derniers potins ! </h1>
-          </div>
-
-
-            <div class="d-grid gap-2 d-md-flex justify-content-md-center py-5">
-                <a href="<%=new_gossip_path%>"><button class="btn btn-primary" type="button" >Je créer un Gossip</button></a>
-                
-            </div>
+<div class="static-slider7" style="background-image:url(https://getwallpapers.com/wallpaper/full/b/2/a/319250.jpg); background-position: top;">
+<div class="container">
+    <!-- Row  -->
+    <div class="row justify-content-center">
+        <!-- Column -->
+        <div class="col-md-8 align-self-center text-center">
+            <h1 class="text-white">Bienvenue <%="#{@user.first_name} #{@user.last_name}"%> !</h1>
+            <br/>
+            <h1 class="title text-white typewrite" data-period="2000" data-type='["Gossip", "Shame", "Story", "NO FAKE !"]'></h1>
+            <br/>
+            <h3 class="text-white">TGP, le site de référence ultime dans le Gossip !</h3>
+            <h5 class="text-white">Consulte ou crée dès à présent ton potin !</h5>
+            <a class="btn btn-danger-gradiant rounded-pill btn-md mt-3 border-0 text-white" href="<%=new_gossip_path%>"><span>CRÉE TON GOSSIP <i class="ti-arrow-right"></i></span></a>
         </div>
-
+        <!-- Column -->
+    </div>
+</div>
+</div>
 
 
 <div class="row">
@@ -27,6 +31,7 @@
           <p class="card-text">Par : <%= gossip.user.first_name %></p>
           <p class="card-text"><%= gossip.content %></p>
           <%= link_to "Voir plus", gossip_path(gossip), class: "btn btn-primary" %>
+          <%= link_to "Modifier", edit_gossip_path(gossip), class: "btn btn-primary" %>
         </div>
       </div>
     </div>

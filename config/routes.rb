@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'city/show'
   get 'log_in/index'
   get 'log_in/show'
   post 'log_in/index', to: 'gossips#create'
@@ -10,8 +11,12 @@ Rails.application.routes.draw do
   get 'team/index'
   get '/log_in/new'
 
-  resources :gossips, except: [:destroy] # Routes RESTful pour les gossips
+  resources :gossips do
+    resources :comments
+  end # Routes RESTful pour les gossips
   resources :users, only: [:show] # Routes RESTful pour les utilisateurs
+  resources :cities
+  
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
