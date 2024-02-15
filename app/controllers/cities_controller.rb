@@ -1,4 +1,5 @@
 class CitiesController < ApplicationController
+  include SessionsHelper
   def show    
     @city = City.find(params[:id])
     @user = User.where(city: @city)

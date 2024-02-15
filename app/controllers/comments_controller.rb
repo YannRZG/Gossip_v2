@@ -1,16 +1,20 @@
 class CommentsController < ApplicationController
-    
+  include SessionsHelper
+  
+  def show
+    @gossip = Gossip.find(params[:id])
+  end
+  
  def create
-  @gossip = Gossip.find(params[:id])    
+  @gossip = Gossip.find(params[:id])
+  user = User.all.sample   
     @comment = Comment.new( 
       content: params['content'])
-
     if @comment.save
-      redirect_to gossip_path(@gossip)
+      redirect_to gossip_path(@gossip.id)
     else
       render "new"
-    end
-    
+    end    
   end 
 
 

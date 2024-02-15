@@ -1,6 +1,6 @@
 class WelcomeController < ApplicationController
 
-  
+  include SessionsHelper
   def index
     @user = User.last
     @gossip = Gossip.new

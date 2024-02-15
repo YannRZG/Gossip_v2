@@ -57,8 +57,11 @@
                             </div>
                             <small>12h ago</small>
                         </div>
+                        <div class="card-body">
+                            
+                            
                             <p class="text-justify comment-text mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
-                            <%= link_to "Modifier", gossip_path(@gossip), class: "btn btn-primary" %>                                             
+                            <%= link_to "Modifier", href:"/gossips/:gossip_id/comments/:id/edit", class: "btn btn-primary" %>                                             
                       </div>                    
                     </div>
                   </div>                    

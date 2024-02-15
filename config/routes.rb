@@ -6,13 +6,13 @@ Rails.application.routes.draw do
   post '/', to: 'welcome#index_post'
   get 'contact/index'
   get 'team/index'
-  
+  get '/signup', to: 'users#new'
 
   resources :sessions, only: [:new, :create, :destroy]
   resources :gossips do
     resources :comments
   end # Routes RESTful pour les gossips
-  resources :users, only: [:show] # Routes RESTful pour les utilisateurs
+  resources :users, only: [:new, :create, :show] # Routes RESTful pour les utilisateurs
   resources :cities
   
 
