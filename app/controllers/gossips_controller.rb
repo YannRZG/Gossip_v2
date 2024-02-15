@@ -1,4 +1,6 @@
 class GossipsController < ApplicationController
+
+  
   def index
     @gossips = Gossip.all
   end
@@ -29,18 +31,15 @@ class GossipsController < ApplicationController
     end
   end
 
-  def create    
-    @gossip = Gossip.new(
-      user_id: params['user_id'].to_i, 
-      title: params['title'], 
-      content: params['content'])
-
+  def create
+    @gossip = Gossip.create(post_params)
+    @gossip.user = User.find_by(id: session[:user_id])
     if @gossip.save
+      flash[:success] = "Potin bien créé !"
       redirect_to root_path
     else
-      render "new"
+      render :new
     end
-    
   end
 
   def destroy

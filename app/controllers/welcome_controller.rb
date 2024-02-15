@@ -1,4 +1,6 @@
 class WelcomeController < ApplicationController
+
+  
   def index
     @user = User.last
     @gossip = Gossip.new

@@ -7,6 +7,8 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+#
+
 require 'faker'
 Faker::Config.locale='fr'
 Faker::UniqueGenerator.clear
@@ -46,9 +48,10 @@ end
   all_users << User.create(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
+    age: rand(18..75),
     description: Faker::Lorem.word,
     email: Faker::Internet.email,
-    age: rand(18..75),
+    password: Faker::Lorem.characters[1..rand(8..16)], #mot de passe du user qui sera crypté dans password_digest
     city: all_cities.sample
     )
 end

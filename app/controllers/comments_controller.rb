@@ -1,41 +1,37 @@
 class CommentsController < ApplicationController
     
-  def show
-    @comment = Comment.find(params[:id])
-  end
-  
+ def create
+  @gossip = Gossip.find(params[:id])    
+    @comment = Comment.new( 
+      content: params['content'])
 
-  def new 
-    @comment = Comment.new 
-  end
+    if @comment.save
+      redirect_to gossip_path(@gossip)
+    else
+      render "new"
+    end
+    
+  end 
 
 
   def edit
+    @gossip = Gossip.find(params[:gossip_id])
     @comment = Comment.find(params[:id])
   end
 
 
   def update
+    @gossip = Gossip.find(params[:gossip_id])
     @comment = Comment.find(params[:id])
     
-    if @comment.update(post_params)
-      redirect_to gossip_path(@comment.gossip), notice: 'Comment was successfully updated.'
+    if @comment.update(content: params['content'])
+      redirect_to gossip_path(@gossip), notice: 'Comment was successfully updated.'
     else
       render "edit"
     end
   end
 
-  def create    
-    @comment = Comment.new( 
-      content: params['content'])
-
-    if @comment.save
-      redirect_to gossips_path
-    else
-      render "new"
-    end
-    
-  end
+  
 
   def destroy
     @comment = Comment.find(params[:id])

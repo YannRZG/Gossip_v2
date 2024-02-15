@@ -1,16 +1,14 @@
 Rails.application.routes.draw do
-  get 'city/show'
-  get 'log_in/index'
-  get 'log_in/show'
-  post 'log_in/index', to: 'gossips#create'
+  get 'city/show' 
   get 'users/index'
   root "welcome#index"
   get 'welcome/index', to: 'welcome#index'
   post '/', to: 'welcome#index_post'
   get 'contact/index'
   get 'team/index'
-  get '/log_in/new'
+  
 
+  resources :sessions, only: [:new, :create, :destroy]
   resources :gossips do
     resources :comments
   end # Routes RESTful pour les gossips
