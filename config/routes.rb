@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  delete '/logout', to: 'sessions#destroy', as: 'logout'
   get 'city/show' 
   get 'users/index'
   root "welcome#index"
@@ -7,6 +8,7 @@ Rails.application.routes.draw do
   get 'contact/index'
   get 'team/index'
   get '/signup', to: 'users#new'
+  post '/users', to: 'users#create'
 
   resources :sessions, only: [:new, :create, :destroy]
   resources :gossips do

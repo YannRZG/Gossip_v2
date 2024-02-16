@@ -1,22 +1,26 @@
 <%= javascript_include_tag 'typewriter' %>
 
 <div class="static-slider7" style="background-image:url(https://getwallpapers.com/wallpaper/full/b/2/a/319250.jpg); background-position: top;">
-<div class="container">
+  <div class="container">
     <!-- Row  -->
     <div class="row justify-content-center">
-        <!-- Column -->
-        <div class="col-md-8 align-self-center text-center">
-            <h1 class="text-white">Bienvenue <%="#{@user.first_name} #{@user.last_name}"%> !</h1>
-            <br/>
-            <h1 class="title text-white typewrite" data-period="2000" data-type='["Gossip", "Shame", "Story", "NO FAKE !"]'></h1>
-            <br/>
-            <h3 class="text-white">TGP, le site de référence ultime dans le Gossip !</h3>
-            <h5 class="text-white">Consulte ou crée dès à présent ton potin !</h5>
-            <a class="btn btn-danger-gradiant rounded-pill btn-md mt-3 border-0 text-white" href="<%=new_gossip_path%>"><span>CRÉE TON GOSSIP <i class="ti-arrow-right"></i></span></a>
-        </div>
-        <!-- Column -->
+      <!-- Column -->
+      <div class="col-md-8 align-self-center text-center">
+        <% if @user %>
+          <h1 class="text-white">Bienvenue <%= "#{@user.first_name} #{@user.last_name}" %> !</h1>
+        <% else %>
+          <h1 class="text-white">Bienvenue Invité !</h1>
+        <% end %>
+        <br/>
+        <h1 class="title text-white typewrite" data-period="2000" data-type='["Gossip", "Shame", "Story", "NO FAKE !"]'></h1>
+        <br/>
+        <h3 class="text-white">TGP, le site de référence ultime dans le Gossip !</h3>
+        <h5 class="text-white">Consulte ou crée dès à présent ton potin !</h5>
+        <a class="btn btn-danger-gradiant rounded-pill btn-md mt-3 border-0 text-white" href="<%= new_gossip_path %>"><span>CRÉE TON GOSSIP <i class="ti-arrow-right"></i></span></a>
+      </div>
+      <!-- Column -->
     </div>
-</div>
+  </div>
 </div>
 
 

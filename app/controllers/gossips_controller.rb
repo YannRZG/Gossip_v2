@@ -1,6 +1,8 @@
 class GossipsController < ApplicationController
   include SessionsHelper
-  
+
+  before_action :authenticate_user, only: [:create, :new, :edit, :update, :destroy]
+
   def index
     @gossips = Gossip.all
   end
